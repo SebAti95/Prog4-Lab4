@@ -1,10 +1,10 @@
 #ifndef ADMINISTRAPROPIEDAD_H
 #define ADMINISTRAPROPIEDAD_H
-#include "DTFecha.h"
 #include <map>
-#include "Inmobiliaria.h"
-#include "Publicacion.h"
 #include "Inmueble.h"
+#include "Publicacion.h"
+
+class Inmobiliaria;
 
 class AdministraPropiedad {
     private:
@@ -18,5 +18,7 @@ class AdministraPropiedad {
         bool pudoCrear(int codigoInmueble);
         void eliminarPublicacionesAsoc();
 };
+
+#include "Inmobiliaria.h"
 
 #endif

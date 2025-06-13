@@ -4,7 +4,8 @@
 #include <string>
 #include <map>
 #include "Usuario.h"
-#include "IUsuario.h"
+
+class IUsuario;
 
 class ControladorUsuario : public IUsuario{
     public:
@@ -12,5 +13,8 @@ class ControladorUsuario : public IUsuario{
         bool altaPropietario(std::string nick, std::string contraseña, std::string nombre, std::string email, std::string cuenta, std::string tel);
         bool altaInmobiliaria(std::string nick, std::string contraseña, std::string nombre, std::string email, std::string direccion, std::string url, std::string tel);
 };
+
+#include "IUsuario.h"
+
 
 #endif

@@ -1,7 +1,8 @@
 #ifndef IUSUARIO_H
 #define IUSUARIO_H
 #include <string>
-#include "ControladorUsuario.h"
+
+class ControladorUsuario;
 
 class IUsuario {
 public:
@@ -10,5 +11,7 @@ public:
     virtual bool altaPropietario(std::string nick, std::string contraseña, std::string nombre, std::string email, std::string cuenta, std::string tel) = 0;
     virtual bool altaInmobiliaria(std::string nick, std::string contraseña, std::string nombre, std::string email, std::string direccion, std::string url, std::string tel) = 0;
 };
+
+#include "ControladorUsuario.h"
 
 #endif 

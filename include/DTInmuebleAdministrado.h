@@ -1,7 +1,6 @@
 #ifndef DTINMUEBLEADMINISTRADO_H
 #define DTINMUEBLEADMINISTRADO_H
 #include "DTFecha.h"
-#include <string>
 
 class DTInmuebleAdministrado {
     private:

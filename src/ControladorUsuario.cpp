@@ -1,33 +1,35 @@
-#include <string>
-#include <map>
-#include "ControladorUsuario.h"
-#include "Cliente.h"
-#include "Propietario.h"
-#include "Inmobiliaria.h"
+#include "../include/ControladorUsuario.h"
+#include "../include/Cliente.h"
+#include "../include/Propietario.h"
+#include "../include/Inmobiliaria.h"
 
 
 bool ControladorUsuario::altaCliente(std::string nick, std::string nombre, std::string contraseña, std::string email, std::string apellido, std::string CI) {
-    if (this->usuarios.find(nick) != this->usuarios.end()) {
-        Cliente* cliente = new Cliente(nick, nombre, email, apellido, contraseña, CI);
-        this->usuarios[nick] = cliente;
+   ManejadoUsuario* manejador = ManejadorUsuario::getInstance();
+   if (manejador.getCliente(nick) != nullptr && manejador.getPropietario(nick) != nullptr && manejador.getInmobiliaria(nick) != nullptr) {
+        Cliente* cliente = new Cliente(nick, nombre, contraseña, email, apellido, CI);
+        manejador->agregarCliente(cliente);
         return true;
     }
     return false;
+
 }
 
 bool ControladorUsuario::altaPropietario(std::string nick, std::string contraseña, std::string nombre, std::string email, std::string cuenta, std::string tel) {
-    if (this->usuarios.find(nick) != this->usuarios.end()) {
-        Propietario* propietario = new Propietario(nick, nombre, email, cuenta, contraseña, tel);
-        this->usuarios[nick] = propietario;
+    ManejadoUsuario* manejador = ManejadorUsuario::getInstance();
+   if (manejador.getCliente(nick) != nullptr && manejador.getPropietario(nick) != nullptr && manejador.getInmobiliaria(nick) != nullptr) {
+        Propietario* propietario = new Propietario(nick, contraseña, nombre, email, cuenta, tel);
+        manejador->agregarPropietario(cliente);
         return true;
     }
     return false;
 }
 
 bool ControladorUsuario::altaInmobiliaria(std::string nick, std::string contraseña, std::string nombre, std::string email, std::string direccion, std::string url, std::string tel) {
-    if (this->usuarios.find(nick) != this->usuarios.end()) {
-        Inmobiliaria* inmobiliaria = new Inmobiliaria(nick, nombre, email, direccion, url, contraseña, tel);
-        this->usuarios[nick] = inmobiliaria;
+    ManejadoUsuario* manejador = ManejadorUsuario::getInstance();
+   if (manejador.getCliente(nick) != nullptr && manejador.getPropietario(nick) != nullptr && manejador.getInmobiliaria(nick) != nullptr) {
+        Inmobiliaria* inmobiliaria = new Inmobiliaria(nick, contraseña, nombre, email, direccion, url, tel);
+        manejador->agregarInmobiliaria(inmobiliaria);
         return true;
     }
     return false;

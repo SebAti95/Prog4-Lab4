@@ -1,9 +1,9 @@
 #ifndef PUBLICACION_H
 #define PUBLICACION_H
-#include "DTFecha.h"
-#include "TipoPublicacion.h"
 #include <string>
 #include <vector>
+#include "DTFecha.h"
+#include "TipoPublicacion.h"
 
 class Publicacion {
 private:
