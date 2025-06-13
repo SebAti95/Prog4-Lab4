@@ -1,5 +1,5 @@
 # Variables
-CXX = C:/msys64/mingw64/bin/g++.exe
+CXX = g++
 CXXFLAGS = -Wall -g -Iinclude
 SRC_DIR = src
 OBJ_DIR = obj
