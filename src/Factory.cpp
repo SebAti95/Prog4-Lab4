@@ -1,5 +1,7 @@
 #include "../include/Factory.h"
 #include "../include/ControladorFechaActual.h"
+#include "../include/ControladorPublicacion.h"
+#include "../include/ControladorUsuario.h"
 #include <cstddef>
 
 Factory* Factory::instance = NULL;

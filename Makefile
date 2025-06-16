@@ -25,6 +25,9 @@ SRCS = $(SRC_DIR)/main.cpp \
        $(SRC_DIR)/ManejadorUsuario.cpp \
        $(SRC_DIR)/Menu.cpp \
        $(SRC_DIR)/Propietario.cpp \
+       $(SRC_DIR)/AdministraPropiedad.cpp \
+       $(SRC_DIR)/ControladorPublicion.cpp \
+       $(SRC_DIR)/ManejadorPublicion.cpp \
        $(SRC_DIR)/Usuario.cpp
 
 OBJS = $(SRCS:.cpp=.o)

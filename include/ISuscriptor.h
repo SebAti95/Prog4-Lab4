@@ -1,10 +1,10 @@
 #ifndef ISUSCRIPTOR_H
 #define ISUSCRIPTOR_H
-#include "DTInmueble.h"
+#include <string>
 
 class ISuscriptor {
     public:
-        virtual void notificar(DTInmueble) = 0; 
+        virtual void notificar(std::string codigoInmueble) = 0; 
         virtual ~ISuscriptor() {} 
 };
 

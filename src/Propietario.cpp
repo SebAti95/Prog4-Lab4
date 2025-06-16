@@ -5,24 +5,12 @@ Propietario::Propietario(std::string nickname, std::string contrasena, std::stri
     this->telefono = telefono;
 };
 Propietario::~Propietario(){
-    
+    this->
 };
-std::string Propietario::getNick() {
-    return this->nickname;
-};
-std::string Propietario::getPasswd() {
-    return this->contrasena;
-};
-std::string Propietario::getNombre() {
-    return this->nombre;
-};
-std::string Propietario::getEmail() {
-    return this->email;
-};
-std::string Inmobiliaria:: getCuentaBancaria(){
+std::string Propietario::getCuentaBancaria(){
     return this->cuentaBancaria;
 };
-std::string Inmobiliaria:: getTelefono(){
+std::string Propietario::getTelefono(){
     return this->telefono;
 };
 

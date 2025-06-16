@@ -1,36 +1,80 @@
 #include "../include/ManejadorUsuario.h"
-/*
-void ManejadorUsuario::agregarCliente(Cliente cliente) {
-	this->clientes.add(getNick(cliente),cliente);
-}
-void ManejadorUsuario::agregarPropietario(Propietario propietario){
-    this->propietario.add(getNick(propietario), propietario);
+
+// Initialize static instance pointer to nullptr
+ManejadorUsuario* ManejadorUsuario::instance = nullptr;
+
+// Constructor
+ManejadorUsuario::ManejadorUsuario() {
+    // Initialize maps if needed
 }
 
-void ManejadorUsuario::agregarInmobiliaria(Inmobiliaria inmobiliaria) {
-    this->inmobiliaria.add(getNick(inmobiliaria), inmobiliaria);
+// Get instance - Singleton pattern
+ManejadorUsuario* ManejadorUsuario::getInstance() {
+    if (instance == nullptr) {
+        instance = new ManejadorUsuario();
+    }
+    return instance;
 }
 
-void ManejadorUsuario::eliminarCliente(Cliente cliente) {
-    this->clientes.remove(cliente);
+// Cliente methods
+void ManejadorUsuario::agregarCliente(Cliente* cliente) {
+    if (cliente != nullptr) {
+        this->cliente[cliente->getNick()] = cliente;
+    }
 }
 
-void ManejadorUsuario::eliminarPropietario(Propietario propietario) {
-    this->propietario.remove(propietario);
+Cliente* ManejadorUsuario::getCliente(std::string nick) {
+    auto it = this->cliente.find(nick);
+    if (it != this->cliente.end()) {
+        return it->second;
+    }
+    return nullptr;
 }
 
-void ManejadorUsuario::eliminarInmobiliaria(Inmobiliaria inmobiliaria) {
-    this->inmobiliaria.remove(inmobiliaria);
+void ManejadorUsuario::eliminarCliente(Cliente* cliente) {
+    if (cliente != nullptr) {
+        this->cliente.erase(cliente->getNick());
+    }
 }
 
-Cliente ManejadorUsuario::getCliente(String nick) {
-   return this->clientes.get(nick);
+// Propietario methods
+void ManejadorUsuario::agregarPropietario(Propietario* propietario) {
+    if (propietario != nullptr) {
+        this->propietario[propietario->getNick()] = propietario;
+    }
 }
 
-Propietario ManejadorUsuario::getPropietario(String nick) {
-   return this->propietario.get(nick);
+Propietario* ManejadorUsuario::getPropietario(std::string nick) {
+    auto it = this->propietario.find(nick);
+    if (it != this->propietario.end()) {
+        return it->second;
+    }
+    return nullptr;
 }
 
-Inmobiliaria ManejadorUsuario::getInmobiliaria(String nick) {
-   return this->inmobiliaria.get(nick);
-}*/
+void ManejadorUsuario::eliminarPropietario(Propietario* propietario) {
+    if (propietario != nullptr) {
+        this->propietario.erase(propietario->getNick());
+    }
+}
+
+// Inmobiliaria methods
+void ManejadorUsuario::agregarInmobiliaria(Inmobiliaria* inmobiliaria) {
+    if (inmobiliaria != nullptr) {
+        this->inmobiliaria[inmobiliaria->getNick()] = inmobiliaria;
+    }
+}
+
+Inmobiliaria* ManejadorUsuario::getInmobiliaria(std::string nick) {
+    auto it = this->inmobiliaria.find(nick);
+    if (it != this->inmobiliaria.end()) {
+        return it->second;
+    }
+    return nullptr;
+}
+
+void ManejadorUsuario::eliminarInmobiliaria(Inmobiliaria* inmobiliaria) {
+    if (inmobiliaria != nullptr) {
+        this->inmobiliaria.erase(inmobiliaria->getNick());
+    }
+}

@@ -14,12 +14,6 @@ class Cliente : public Usuario, public ISuscriptor {
     public:
         Cliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento);
         ~Cliente();
-        /*
-        virtual std::string getNick();
-        virtual std::string getPasswd();
-        virtual std::string getNombre();
-        virtual std::string getEmail();
-        */
         std::string getApellido();
         std::string getDocumento();
         virtual void notificar(std::string codigoInmueble);

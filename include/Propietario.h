@@ -17,12 +17,6 @@ class Propietario : public Usuario, public ISuscriptor {
     public:
         Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono);
         ~Propietario();
-        /*
-        virtual std::string getNick();
-        virtual std::string getNombre();
-        virtual std::string getPasswd();
-        virtual std::string getEmail();
-        */
         std::string getCuentaBancaria();
         std::string getTelefono();
         virtual void notificar(std::string codigoInmueble);

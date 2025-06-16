@@ -16,16 +16,16 @@ class ManejadorUsuario {
         std::map<std::string, Propietario*> propietario;
 
     public:
-        ManejadorUsuario getInstance();
-        void agregarCliente(Cliente cliente);
-        void agregarPropietario(Propietario propietario);
-        void agregarInmobiliaria(Inmobiliaria inmobiliaria);
-        void eliminarCliente(Cliente cliente);
-        void eliminarPropietario(Propietario propietario);
-        void eliminarInmobiliaria(Inmobiliaria inmobiliaria);
-        Cliente getCliente(std::string nick);
-        Inmobiliaria getInmobiliaria(std::string nick);
-        Propietario getPropietario(std::string nick);
+        static ManejadorUsuario* getInstance();
+        void agregarCliente(Cliente* cliente);
+        void agregarPropietario(Propietario* propietario);
+        void agregarInmobiliaria(Inmobiliaria* inmobiliaria);
+        void eliminarCliente(Cliente* cliente);
+        void eliminarPropietario(Propietario* propietario);
+        void eliminarInmobiliaria(Inmobiliaria* inmobiliaria);
+        Cliente* getCliente(std::string nick);
+        Inmobiliaria* getInmobiliaria(std::string nick);
+        Propietario* getPropietario(std::string nick);
 };
 
 #endif

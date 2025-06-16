@@ -7,9 +7,10 @@
 #include "Usuario.h"
 #include "ISuscriptor.h"
 #include "DTInmuebleAdministrado.h"
-#include "Propietario.h"
 
+// Forward declarations
 class AdministraPropiedad;
+class Propietario;
 
 class Inmobiliaria : public Usuario {
     private:
@@ -22,12 +23,6 @@ class Inmobiliaria : public Usuario {
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
         ~Inmobiliaria();
-        /*
-        virtual std::string getNick();
-        virtual std::string getPasswd();
-        virtual std::string getNombre();
-        virtual std::string getEmail();
-        */
         std::string getDireccion();
         std::string getUrl();
         std::string getTelefono();

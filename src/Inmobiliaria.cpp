@@ -7,21 +7,10 @@ Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::st
 }
 
 Inmobiliaria::~Inmobiliaria() {
-    for (auto& propiedad : propiedadesAdministradas) {
+    for (AdministraPropiedad* propiedad : propiedadesAdministradas) {
         delete propiedad;
     }
-}
-std::string Inmobiliaria::getNick() {
-    return this->nickname;
-}
-std::string Inmobiliaria::getPasswd() {
-    return this->contrasena;
-}
-std::string Inmobiliaria::getNombre() {
-    return this->nombre;
-}
-std::string Inmobiliaria::getEmail() {
-    return this->email;
+    delete this;
 }
 std::string Inmobiliaria:: getDireccion(){
     return this->direccion;
