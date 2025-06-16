@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "*.embeddedhtml": "html",
+        "xstring": "cpp",
+        "format": "cpp",
+        "string": "cpp",
+        "vector": "cpp"
+    },
+    "makefile.configureOnOpen": false
+}

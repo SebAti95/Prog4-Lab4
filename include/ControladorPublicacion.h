@@ -10,12 +10,12 @@
 #include "IPublicacion.h"
 #include "DTUsuario.h"
 #include "Publicacion.h"
+#include "ManejadorPublicacion.h"
 
 class ControladorPublicacion : public IPublicacion {
     private:
-        std::map<int, Publicacion*> publicaciones;
-        std::map<int, Inmueble*> inmuebles; 
-        std::map<std::string, Inmobiliaria*> inmobiliarias;
+        ManejadorPublicacion* manejador;
+
     public:
         ControladorPublicacion();
         ~ControladorPublicacion();
@@ -25,4 +25,5 @@ class ControladorPublicacion : public IPublicacion {
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
         void eliminarInmueble(int codigoInmueble);
 };
+
 #endif                      

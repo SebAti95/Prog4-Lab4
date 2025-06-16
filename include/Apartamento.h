@@ -1,7 +1,7 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
-#include "Inmueble.h"
 
+#include "Inmueble.h"
 
 class Apartamento : public Inmueble {
     private:
@@ -12,6 +12,9 @@ class Apartamento : public Inmueble {
     public:
         Apartamento(int piso, bool tieneAscensor, float gastosComunes);
         ~Apartamento();
+        int getPiso();
+        bool getTieneAscensor();
+        float getGastosComunes();
 };
 
 #endif

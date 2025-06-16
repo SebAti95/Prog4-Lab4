@@ -1,6 +1,9 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 #include <string>
+#include <vector>
+
+class AdministraPropiedad;
 
 class Inmueble {
     private:
@@ -9,6 +12,7 @@ class Inmueble {
         int numeroPuerta;
         int superficie;
         int anoConstruccion;
+        std::vector<AdministraPropiedad*> administraciones;
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
@@ -20,5 +24,7 @@ class Inmueble {
         int getAnoConstruccion();
         void removePropietario();
 };
+
+#include "AdministraPropiedad.h"
 
 #endif
