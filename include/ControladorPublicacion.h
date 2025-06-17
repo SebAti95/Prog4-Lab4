@@ -27,7 +27,6 @@ class ControladorPublicacion : public IPublicacion {
     public:
         static ControladorPublicacion* getInstance();
         ~ControladorPublicacion();
-        std::set<DTUsuario> listarInmobiliarias();
         std::set<DTInmuebleAdministrado> listarInmueblesAdministrados(std::string nicknameInmobiliaria);
         bool altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
 
