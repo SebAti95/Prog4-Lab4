@@ -7,6 +7,8 @@
 #include "Usuario.h"
 #include "ISuscriptor.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
+#include "DTUsuario.h"
 
 class AdministraPropiedad;
 
@@ -30,6 +32,11 @@ class Inmobiliaria : public Usuario {
         void agregar(ISuscriptor o);
         void eliminar(ISuscriptor o);
         bool crearPub();
+        DTUsuario getDTUsuario();
+        void representarPropietario(std::string nicknamePropietario);
+        //caso nuevo
+        std::set<DTInmuebleListado> getInmbueblesNoAdminPropietario();
+        void altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fechaActual);
 };
 
 #include "AdministraPropiedad.h"

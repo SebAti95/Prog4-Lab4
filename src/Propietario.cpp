@@ -8,7 +8,7 @@ Propietario::Propietario(std::string nickname, std::string contrasena, std::stri
 Propietario::~Propietario(){
     this->publicacionesSuscritas.clear();
     //Eliminar cada uno de los inmuebles antes del clear...
-    this->propiedades.clear();
+    this->inmuebles.clear();
     delete this;
 };
 
@@ -22,3 +22,22 @@ std::string Propietario::getTelefono(){
 void Propietario::notificar(std::string codigoInmueble) {
     this->publicacionesSuscritas.push_back(codigoInmueble);
 };
+
+std::set<DTInmuebleListado> Propietario::getInmbueblesNoAdmin(Inmobiliaria* inm) {
+    std::set<DTInmuebleListado> inmueblesNoAdministrados;
+   for (std::map<int,Inmueble*>::iterator i = this->inmuebles.begin(); i != this->inmuebles.end(); ++i) {
+        bool administrado = i->second->esAdministrado(inm);
+        if(!administrado){
+            int codigo = i->second->getCodigo();
+            std::string direccion = i->second->getDireccion();
+            std::string propietario=this->getNick();
+            DTInmuebleListado DT=DTInmuebleListado(codigo, direccion,  propietario); 
+            inmueblesNoAdministrados.insert(DT);
+        };
+    }
+    return inmueblesNoAdministrados
+}
+
+void Propietario::removeInmueble(int codigoInmueble) {
+    this->inmuebles.erase(codigoInmueble);
+}

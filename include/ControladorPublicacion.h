@@ -15,11 +15,13 @@
 #include "DTInmuebleAdministrado.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
+#include "ManejadorUsuario.h"
+#include "Factory.h"
+#include "ControladorFechaActual.h"
 
 class ControladorPublicacion : public IPublicacion {
     private:
         static ControladorPublicacion* instance;
-        ManejadorPublicacion* manejador;
         ControladorPublicacion(); // Private constructor for singleton
 
     public:
@@ -31,7 +33,7 @@ class ControladorPublicacion : public IPublicacion {
 
         //caso uso nuevo
         std::set<DTInmuebleListado> listarInmueblesNoAdministrados(std::string nickInmobiliaria);
-
+        void altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble);
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
         void eliminarInmueble(int codigoInmueble);
 };

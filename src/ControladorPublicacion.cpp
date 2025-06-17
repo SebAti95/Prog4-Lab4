@@ -5,9 +5,7 @@
 ControladorPublicacion* ControladorPublicacion::instance = nullptr;
 
 // Constructor
-ControladorPublicacion::ControladorPublicacion() {
-    this->manejador = ManejadorPublicacion::getInstance();
-}
+ControladorPublicacion::ControladorPublicacion() { }
 
 // Singleton getInstance method
 ControladorPublicacion* ControladorPublicacion::getInstance() {
@@ -27,7 +25,14 @@ ControladorPublicacion::~ControladorPublicacion() {
 
 std::set<DTUsuario> ControladorPublicacion::listarInmobiliarias() {
     // Implementation pending
-    return std::set<DTUsuario>();
+    std::set<DTUsuario> res;
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    std::set<Inmobiliaria*> li = m->getInmobiliarias();  
+    for(std::set<Inmobiliaria*>::iterator i = li.begin(); i != li.end(); ++i) { // recorro inmobiliarias
+        DTUsuario dt = (*i)->getDTUsuario();
+        res.insert(dt);
+    }
+    return res;//std::set<DTUsuario>();
 }
 
 std::set<DTInmuebleAdministrado> ControladorPublicacion::listarInmueblesAdministrados(std::string nicknameInmobiliaria) {
@@ -49,26 +54,21 @@ void ControladorPublicacion::eliminarInmueble(int codigoInmueble) {
     // Implementation pending
 }
 
-std::set<DTInmuebleListado> ControladorPublicacion::listarInmueblesNoAdministrados(std::string nickInmobiliaria){
-    ManejadorUsuario* m = this->manejador;
-    Inmobiliaria* inm = this->getInmobiliaria(nickInmobiliaria);
-    for (std::map<int,Propietario*>::iterator i = inm->propietariosRepresentados.begin(); i != inm->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
-        for (std::map<int,Inmueble*>::iterator j = i.p.begin(); j != inm->propietariosRepresentados.end(); ++j) //recorrer los inmuebles de ese propietario
-            for();//recorrer los administra propiedad de ese inmueble
-                
-    };
+void ControladorPublicacion::altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) {
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
+    ManejadorPublicacion* mp = ManejadorPublicacion::getInstance();
+    Inmueble* inmueble = mp->getInmueble(codigoInmueble);
+    Factory* factory = Factory::getInstance();
+    IControladorFechaActual* cfecha = factory->getControladorFechaActual();
+    DTFecha* fechaActual = cfecha->getFechaActual();
+    inm->altaAdministracionPropiedad(inmueble, fechaActual);
 }
 
-/*#include <iostream>
-#include <map>
-
-int main() {
-    std::map<std::string, int> edades = { {"Ana", 25}, {"Luis", 30}, {"Juan", 22} };
-
-    
-        std::cout << it->first << ": " << it->second << std::endl;
-    }
-
-    return 0;
-}*/
+std::set<DTInmuebleListado> ControladorPublicacion::listarInmueblesNoAdministrados(std::string nickInmobiliaria){
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Inmobiliaria* inm = m->getInmobiliaria(nickInmobiliaria);
+    std::set<DTInmuebleListado> listInmuebles = inm->getInmbueblesNoAdminPropietario();
+    return listInmuebles;             
+};
 

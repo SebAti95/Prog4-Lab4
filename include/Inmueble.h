@@ -5,6 +5,8 @@
 
 class AdministraPropiedad;
 
+class Propietario;
+
 class Inmueble {
     private:
         int codigo;
@@ -13,6 +15,7 @@ class Inmueble {
         int superficie;
         int anoConstruccion;
         std::vector<AdministraPropiedad*> administraciones;
+        Propietario* propietario;
 
     public:
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
@@ -23,8 +26,10 @@ class Inmueble {
         int getSuperficie();
         int getAnoConstruccion();
         void removePropietario();
+        bool esAdministrado(Inmobiliaria* inm);
+        void asociarAdministracionPropiedad(AdministraPropiedad* adminPropiedad);
 };
 
 #include "AdministraPropiedad.h"
-
+#include "Propietario.h"
 #endif

@@ -55,6 +55,17 @@ bool ControladorUsuario::altaInmobiliaria(std::string nick, std::string contrase
     }
     return false;
 }
+
+std::set<DTUsuario> ControladorUsuario::listarInmobiliarias() {
+    std::set<DTUsuario> res;
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    std::set<Inmobiliaria*> li = m->getInmobiliarias();  
+    for(std::set<Inmobiliaria*>::iterator i=li.begin();i!=li.end();++i){//recorro inmobiliarias
+        DTUsuario dt = (*i)->getDTUsuario();
+        res.insert(dt);
+    }
+    return res;
+}
 /*
 std::set<DTInmuebleListado> ControladorUsuario::listarInmueblesNoAdministrados(std::string nickInmobiliaria){
     ManejadorUsuario* m = m->getInstance();

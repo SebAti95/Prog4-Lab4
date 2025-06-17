@@ -22,8 +22,24 @@ std::string Inmobiliaria:: getUrl(){
 std::string Inmobiliaria:: getTelefono(){
     return this->telefono;
 }
-/*
-std::set<DTInmuebleAdministrado> Inmobiliaria::coleccionInmuebles() {
-
+DTUsuario Inmobiliaria:: getDTUsuario(){
+    std::string nickname = this->getNick();
+    std::string nombre = this->getNombre();
+    DTUsuario dt = DTUsuario(nickname,nombre);
+    return dt;
 }
-*/
+std::set<DTInmuebleListado> Inmobiliaria::getInmbueblesNoAdminPropietario() {
+    std::set<DTInmuebleListado> inmueblesNoAdministrados;
+    for (std::map<int,Propietario*>::iterator i = this->propietariosRepresentados.begin(); i != this->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
+        std::set<DTInmuebleListado> listInmueblesPropietario = i->second->getInmbueblesNoAdmin(this);
+        inmueblesNoAdministrados.insert(listInmueblesPropietario.begin(), listInmueblesPropietario.end());
+    }
+    return inmueblesNoAdministrados;
+}
+
+void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fechaActual) {
+    AdministraPropiedad* nuevaAdministracion = new AdministraPropiedad(this, inmueble, fechaActual);
+    this->propiedadesAdministradas.push_back(nuevaAdministracion);
+    inmueble->asociarAdministracionPropiedad(nuevaAdministracion);
+}
+

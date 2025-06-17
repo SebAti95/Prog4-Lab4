@@ -24,6 +24,7 @@ class ControladorUsuario : public IUsuario {
         
         //Caso de uso nuevo
         void altaAdministraPropiedad(std::string nickInmobiliaria, int codigoInmueble);
+        std::set<DTUsuario> listarInmobiliarias();
 };
 
 #endif
