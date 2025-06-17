@@ -4,9 +4,14 @@ Propietario::Propietario(std::string nickname, std::string contrasena, std::stri
     this->cuentaBancaria = cuenta;
     this->telefono = telefono;
 };
+
 Propietario::~Propietario(){
-    this->
+    this->publicacionesSuscritas.clear();
+    //Eliminar cada uno de los inmuebles antes del clear...
+    this->propiedades.clear();
+    delete this;
 };
+
 std::string Propietario::getCuentaBancaria(){
     return this->cuentaBancaria;
 };

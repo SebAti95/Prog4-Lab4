@@ -8,8 +8,8 @@
 #include "ISuscriptor.h"
 #include "DTInmuebleAdministrado.h"
 
-// Forward declarations
 class AdministraPropiedad;
+
 class Propietario;
 
 class Inmobiliaria : public Usuario {
@@ -33,5 +33,6 @@ class Inmobiliaria : public Usuario {
 };
 
 #include "AdministraPropiedad.h"
+#include "Propietario.h"
 
 #endif

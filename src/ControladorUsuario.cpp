@@ -55,3 +55,14 @@ bool ControladorUsuario::altaInmobiliaria(std::string nick, std::string contrase
     }
     return false;
 }
+/*
+std::set<DTInmuebleListado> ControladorUsuario::listarInmueblesNoAdministrados(std::string nickInmobiliaria){
+    ManejadorUsuario* m = m->getInstance();
+    Inmobiliaria* inm = m->getInmobiliaria(nickInmobiliaria);
+    for (std::map<int,Propietario*>::iterator i = inm->propietariosRepresentados.begin(); i != inm->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
+        for (std::map<int,Inmueble*>::iterator j = i.p.begin(); j != inm->propietariosRepresentados.end(); ++j) //recorrer los inmuebles de ese propietario
+            for();//recorrer los administra propiedad de ese inmueble
+                
+    };
+}
+*/

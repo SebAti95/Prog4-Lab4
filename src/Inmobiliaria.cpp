@@ -10,6 +10,7 @@ Inmobiliaria::~Inmobiliaria() {
     for (AdministraPropiedad* propiedad : propiedadesAdministradas) {
         delete propiedad;
     }
+    this->propietariosRepresentados.clear();
     delete this;
 }
 std::string Inmobiliaria:: getDireccion(){

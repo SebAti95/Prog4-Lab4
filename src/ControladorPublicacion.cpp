@@ -48,3 +48,27 @@ std::set<DTPublicacion> ControladorPublicacion::listarPublicacion(TipoPublicacio
 void ControladorPublicacion::eliminarInmueble(int codigoInmueble) {
     // Implementation pending
 }
+
+std::set<DTInmuebleListado> ControladorPublicacion::listarInmueblesNoAdministrados(std::string nickInmobiliaria){
+    ManejadorUsuario* m = this->manejador;
+    Inmobiliaria* inm = this->getInmobiliaria(nickInmobiliaria);
+    for (std::map<int,Propietario*>::iterator i = inm->propietariosRepresentados.begin(); i != inm->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
+        for (std::map<int,Inmueble*>::iterator j = i.p.begin(); j != inm->propietariosRepresentados.end(); ++j) //recorrer los inmuebles de ese propietario
+            for();//recorrer los administra propiedad de ese inmueble
+                
+    };
+}
+
+/*#include <iostream>
+#include <map>
+
+int main() {
+    std::map<std::string, int> edades = { {"Ana", 25}, {"Luis", 30}, {"Juan", 22} };
+
+    
+        std::cout << it->first << ": " << it->second << std::endl;
+    }
+
+    return 0;
+}*/
+
