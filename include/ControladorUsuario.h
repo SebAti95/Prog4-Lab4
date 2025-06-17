@@ -2,7 +2,9 @@
 #define CONTROLADORUSUARIO_H
 
 #include "IUsuario.h"
+#include <set>
 #include <string>
+#include "DTUsuario.h"
 
 // Forward declaration
 class ManejadorUsuario;

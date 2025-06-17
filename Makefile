@@ -21,13 +21,15 @@ SRCS = $(SRC_DIR)/main.cpp \
        $(SRC_DIR)/DTUsuario.cpp \
        $(SRC_DIR)/Factory.cpp \
        $(SRC_DIR)/Inmobiliaria.cpp \
+       $(SRC_DIR)/Inmueble.cpp \
+       $(SRC_DIR)/Publicacion.cpp \
        $(SRC_DIR)/ISuscriptor.cpp \
        $(SRC_DIR)/ManejadorUsuario.cpp \
        $(SRC_DIR)/Menu.cpp \
        $(SRC_DIR)/Propietario.cpp \
        $(SRC_DIR)/AdministraPropiedad.cpp \
-       $(SRC_DIR)/ControladorPublicion.cpp \
-       $(SRC_DIR)/ManejadorPublicion.cpp \
+       $(SRC_DIR)/ControladorPublicacion.cpp \
+       $(SRC_DIR)/ManejadorPublicacion.cpp \
        $(SRC_DIR)/Usuario.cpp
 
 OBJS = $(SRCS:.cpp=.o)

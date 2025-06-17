@@ -14,6 +14,7 @@ public:
     int getCodigo() const;
     std::string getDireccion() const;
     std::string getPropietario() const;
+    bool operator<(const DTInmuebleListado& other) const;
 };
 
 #endif

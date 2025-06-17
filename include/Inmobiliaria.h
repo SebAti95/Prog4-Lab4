@@ -5,6 +5,7 @@
 #include <vector>
 #include <set>
 #include "Usuario.h"
+#include "Inmueble.h"
 #include "ISuscriptor.h"
 #include "DTInmuebleAdministrado.h"
 #include "DTInmuebleListado.h"

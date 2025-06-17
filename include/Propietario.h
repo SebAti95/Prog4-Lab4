@@ -1,11 +1,13 @@
 #ifndef PROPIETARIO_H
 #define PROPIETARIO_H
 
-#include <vector>
+#include <string>
 #include <map>
+#include <set>
 #include "Usuario.h"
-#include "ISuscriptor.h"
+#include "DTInmuebleListado.h"
 #include "Inmueble.h"
+#include "ISuscriptor.h"
 
 
 class Propietario : public Usuario, public ISuscriptor {

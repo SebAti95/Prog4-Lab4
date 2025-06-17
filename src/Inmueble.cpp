@@ -11,7 +11,7 @@ Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int supe
 Inmueble::~Inmueble() {
     removePropietario();
     this->administraciones.clear();
-    delete this;
+    // Removed 'delete this' which causes undefined behavior
 }
 int Inmueble::getCodigo() {
     return this->codigo;
@@ -36,11 +36,10 @@ bool Inmueble::esAdministrado(Inmobiliaria* inm) {
     for (i = this->administraciones.begin(); i != this->administraciones.end(); ++i) { 
         bool administra = (*i)->inmobiliariaAsociada(inm);
         if (administra == true){
-            return true ;
-            break;
+            return true;
         }
-        return false;
     }
+    return false;
 }
 
 void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* adminPropiedad) {

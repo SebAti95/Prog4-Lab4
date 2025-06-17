@@ -23,13 +23,13 @@ void ManejadorUsuario::agregarCliente(Cliente* cliente) {
     }
 }
 
-/*Cliente* ManejadorUsuario::getCliente(std::string nick) {
+Cliente* ManejadorUsuario::getCliente(std::string nick) {
     auto it = this->cliente.find(nick);
     if (it != this->cliente.end()) {
         return it->second;
     }
     return nullptr;
-}*/
+}
 
 void ManejadorUsuario::eliminarCliente(Cliente* cliente) {
     if (cliente != nullptr) {
@@ -78,6 +78,7 @@ std::set<Inmobiliaria*> ManejadorUsuario::getInmobiliarias() {
     for (std::map<std::string, Inmobiliaria*>::iterator it = this->inmobiliaria.begin(); it != this->inmobiliaria.end(); ++it) {
         inmobiliariasSet.insert(it->second);
     }
+    return inmobiliariasSet;
 }
 
 void ManejadorUsuario::eliminarInmobiliaria(Inmobiliaria* inmobiliaria) {

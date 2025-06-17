@@ -35,7 +35,7 @@ std::set<DTInmuebleListado> Propietario::getInmbueblesNoAdmin(Inmobiliaria* inm)
             inmueblesNoAdministrados.insert(DT);
         };
     }
-    return inmueblesNoAdministrados
+    return inmueblesNoAdministrados;
 }
 
 void Propietario::removeInmueble(int codigoInmueble) {

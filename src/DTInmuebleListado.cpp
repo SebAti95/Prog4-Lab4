@@ -6,14 +6,18 @@ DTInmuebleListado::DTInmuebleListado(int codigo, std::string direccion, std::str
     this->propietario = propietario;
 }
 
-int DTInmuebleListado::getCodigo() {
-    return codigo;
+int DTInmuebleListado::getCodigo() const {
+    return this->codigo;
 }
 
-std::string DTInmuebleListado::getDireccion() {
-    return direccion;
+std::string DTInmuebleListado::getDireccion() const {
+    return this->direccion;
 }
 
-std::string DTInmuebleListado::getPropietario() {
-    return propietario;
+std::string DTInmuebleListado::getPropietario() const {
+    return this->propietario;
+}
+
+bool DTInmuebleListado::operator<(const DTInmuebleListado& other) const {
+    return this->codigo < other.codigo;
 }

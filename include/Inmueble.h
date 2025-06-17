@@ -7,6 +7,8 @@ class AdministraPropiedad;
 
 class Propietario;
 
+class Inmobiliaria;
+
 class Inmueble {
     private:
         int codigo;
