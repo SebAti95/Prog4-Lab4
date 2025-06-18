@@ -29,7 +29,9 @@ int Inmueble::getAnoConstruccion() {
     return this->anoConstruccion;
 }
 void Inmueble::removePropietario() {
-    
+    int codigoInmu = this->getCodigo();
+    this->propietario->removeInmueble(codigoInmu);
+    this->propietario = NULL;
 }
 bool Inmueble::esAdministrado(Inmobiliaria* inm) {
     std::vector<AdministraPropiedad*>::iterator i;
@@ -37,6 +39,7 @@ bool Inmueble::esAdministrado(Inmobiliaria* inm) {
         bool administra = (*i)->inmobiliariaAsociada(inm);
         if (administra == true){
             return true;
+            break;
         }
     }
     return false;

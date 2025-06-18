@@ -31,7 +31,7 @@ DTUsuario Inmobiliaria:: getDTUsuario(){
 std::set<DTInmuebleListado> Inmobiliaria::getInmbueblesNoAdminPropietario() {
     std::set<DTInmuebleListado> inmueblesNoAdministrados;
     for (std::map<int,Propietario*>::iterator i = this->propietariosRepresentados.begin(); i != this->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
-        std::set<DTInmuebleListado> listInmueblesPropietario = i->second->getInmbueblesNoAdmin(this);
+        std::set<DTInmuebleListado> listInmueblesPropietario = i->second->getInmueblesNoAdmin(this);
         inmueblesNoAdministrados.insert(listInmueblesPropietario.begin(), listInmueblesPropietario.end());
     }
     return inmueblesNoAdministrados;

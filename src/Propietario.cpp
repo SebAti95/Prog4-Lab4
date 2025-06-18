@@ -23,7 +23,7 @@ void Propietario::notificar(std::string codigoInmueble) {
     this->publicacionesSuscritas.push_back(codigoInmueble);
 };
 
-std::set<DTInmuebleListado> Propietario::getInmbueblesNoAdmin(Inmobiliaria* inm) {
+std::set<DTInmuebleListado> Propietario::getInmueblesNoAdmin(Inmobiliaria* inm) {
     std::set<DTInmuebleListado> inmueblesNoAdministrados;
    for (std::map<int,Inmueble*>::iterator i = this->inmuebles.begin(); i != this->inmuebles.end(); ++i) {
         bool administrado = i->second->esAdministrado(inm);
@@ -39,5 +39,9 @@ std::set<DTInmuebleListado> Propietario::getInmbueblesNoAdmin(Inmobiliaria* inm)
 }
 
 void Propietario::removeInmueble(int codigoInmueble) {
+    /*
+    std::map<int,Inmueble*>::iterator it;
+    it = this->inmuebles.find(codigoInmueble);
+    */
     this->inmuebles.erase(codigoInmueble);
 }

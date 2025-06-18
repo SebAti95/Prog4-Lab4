@@ -23,7 +23,7 @@ class Propietario : public Usuario, public ISuscriptor {
         std::string getCuentaBancaria();
         std::string getTelefono();
         virtual void notificar(std::string codigoInmueble);
-        std::set<DTInmuebleListado> getInmbueblesNoAdmin(Inmobiliaria* inm);
+        std::set<DTInmuebleListado> getInmueblesNoAdmin(Inmobiliaria* inm);
         void removeInmueble(int codigoInmueble);
 };
 
