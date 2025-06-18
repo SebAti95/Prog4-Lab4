@@ -36,12 +36,18 @@ std::set<DTUsuario> ControladorPublicacion::listarInmobiliarias() {
 }
 
 std::set<DTInmuebleAdministrado> ControladorPublicacion::listarInmueblesAdministrados(std::string nicknameInmobiliaria) {
-    // Implementation pending
-    return std::set<DTInmuebleAdministrado>();
+    std::set<DTInmuebleAdministrado> res;
+    ManejadorUsuario* m = ManejadorUsuario::getInstance();
+    Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
+    res = inm->coleccionInmuebles();
+    return res
 }
 
 bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) {
     // Implementation pending
+    ManejadorPublicacion* m=ManejadorPublicacion::getInstance();
+    Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
+    bool exito=crearPub(inm);
     return false;
 }
 

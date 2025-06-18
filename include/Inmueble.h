@@ -2,6 +2,7 @@
 #define INMUEBLE_H
 #include <string>
 #include <vector>
+#include "DTInmueble.h"
 
 class AdministraPropiedad;
 
@@ -27,6 +28,7 @@ class Inmueble {
         int getNumeroPuerta();
         int getSuperficie();
         int getAnoConstruccion();
+        DTInmueble getDTInmueble();
         void removePropietario();
         bool esAdministrado(Inmobiliaria* inm);
         void asociarAdministracionPropiedad(AdministraPropiedad* adminPropiedad);
