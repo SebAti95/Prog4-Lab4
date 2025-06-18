@@ -28,9 +28,25 @@ DTUsuario Inmobiliaria:: getDTUsuario(){
     DTUsuario dt = DTUsuario(nickname,nombre);
     return dt;
 }
-bool Inmobiliaria:: crearPub(Inmobiliaria* inm){
-    
+
+AdministraPropiedad* Inmobiliaria::crearPub(int codigoInm, TipoPublicacion tipo, DTFecha* fecha){
+    AdministraPropiedad* admin = nullptr;
+    bool ok = false;
+    for (std::vector<AdministraPropiedad*>::iterator it = this->propiedadesAdministradas.begin(); it != this->propiedadesAdministradas.end(); ++it) {
+        Inmueble* i = (*it)->getInmueble();
+        int codigo = i->getCodigo();
+        if(codigo==codigoInm){
+            admin = (*it);
+            break;
+        }
+    }
+    ok = admin->puedeCrear(tipo,fecha);
+    if (ok)
+        return admin;
+    else 
+        return nullptr;
 }
+
 std::set<DTInmuebleListado> Inmobiliaria::getInmbueblesNoAdminPropietario() {
     std::set<DTInmuebleListado> inmueblesNoAdministrados;
     for (std::map<int,Propietario*>::iterator i = this->propietariosRepresentados.begin(); i != this->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
@@ -48,7 +64,7 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fech
 
 std::set<DTInmuebleAdministrado> Inmobiliaria::coleccionInmuebles() {
     std::set<DTInmuebleAdministrado> inmueblesAdministrados;
-    for(std::set<AdministraPropiedad*>::iterator it = propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); ++it) {
+    for(std::set<AdministraPropiedad*>::iterator it = this->propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); ++it) {
         Inmueble* inmueble = (*it)->getInmueble();
         if (inmueble != nullptr) {
             DTInmuebleAdministrado dtInmueble(inmueble->getCodigo(), inmueble->getDireccion(), this->getNick());

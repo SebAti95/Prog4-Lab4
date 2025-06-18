@@ -47,8 +47,17 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
     // Implementation pending
     ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
-    //bool exito=crearPub(inm);
-    return false;
+    Factory* factory = Factory::getInstance();
+    IControladorFechaActual* cfecha = factory->getControladorFechaActual();
+    DTFecha* fechaActual = cfecha->getFechaActual();
+    //Inmueble* i = m->getInmueble(codigoInmueble);
+    AdministraPropiedad* admin = inm->crearPub(codigoInmueble, tipoPublicacion,fechaActual);
+    bool exito = admin != nullptr;
+    if(exito){
+        Publicacion* p = new Publicacion(codigoInmueble, fechaActual,tipoPublicacion,texto,precio, true);
+        admin->agregarPublicacion(p);
+        m->agregarPublicacion(p);
+    return exito;
 }
 
 std::set<DTPublicacion> ControladorPublicacion::listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble) {

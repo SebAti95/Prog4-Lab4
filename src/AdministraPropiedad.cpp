@@ -1,11 +1,13 @@
 #include "../include/AdministraPropiedad.h"
 
 // Constructor
+/*
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha) {
     this->fecha = fecha;
     this->inmobiliaria = nullptr;
     this->inmueble = nullptr;
 }
+*/
 
 AdministraPropiedad::AdministraPropiedad(Inmobiliaria* inm, Inmueble* inmue, DTFecha* fecha) {
     this->fecha = new DTFecha(*fecha); // Assuming DTFecha has a copy constructor
@@ -44,12 +46,25 @@ AdministraPropiedad::~AdministraPropiedad() {
     inmobiliaria = nullptr;
     inmueble = nullptr;
 }
-
+Inmueble* AdministraPropiedad::getInmueble(){
+    return this->inmueble;
+}
+Inmobiliaria* AdministraPropiedad::getInmobiliaria(){
+    return this->inmobiliaria;
+}
+DTFecha* AdministraPropiedad::getFecha(){
+    this->fecha;
+}
 // Implementation of pudoCrear method
-bool AdministraPropiedad::pudoCrear(int codigoInmueble) {
+bool AdministraPropiedad::puedeCrear(TipoPublicacion tipo,DTFecha* fecha) {
     // Implementation pending
-    
-    return false;
+    bool pub = false;
+    for(std::map<int, Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
+       pub = ((it->second->getTipo()==tipo) && (it->second->getFecha() == fecha));
+       if(pub)
+        break;
+    }
+    return !pub;
 }
 
 // Implementation of eliminarPublicacionesAsoc method
@@ -69,3 +84,7 @@ bool AdministraPropiedad::inmobiliariaAsociada(Inmobiliaria* inm) {
     return (this->inmobiliaria == inm);
 }
 
+void AdministraPropiedad::agregarPublicacion(Publicacion* p) {
+    int codigo = p->getCodigo();
+    this->publicaciones[codigo]=p;
+}

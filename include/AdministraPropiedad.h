@@ -17,9 +17,13 @@ class AdministraPropiedad {
         AdministraPropiedad(DTFecha* fecha);
         AdministraPropiedad(Inmobiliaria* inm, Inmueble* inmue, DTFecha* fecha);
         ~AdministraPropiedad();
-        bool pudoCrear(int codigoInmueble);
+        Inmueble* getInmueble();
+        Inmobiliaria* getInmobiliaria();
+        DTFecha* getFecha();
+        bool puedeCrear(TipoPublicacion tipo,DTFecha* fecha);
         void eliminarPublicacionesAsoc();
         bool inmobiliariaAsociada(Inmobiliaria* inm);
+        void agregarPublicacion(Publicacion* pub);
 };
 
 #include "Inmobiliaria.h"

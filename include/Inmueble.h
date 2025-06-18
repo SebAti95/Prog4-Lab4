@@ -21,7 +21,7 @@ class Inmueble {
         Propietario* propietario;
 
     public:
-        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
+        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* propietario);
         ~Inmueble();
         int getCodigo();
         std::string getDireccion();

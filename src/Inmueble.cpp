@@ -1,11 +1,12 @@
 #include "../include/Inmueble.h"
 
-Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion) {
+Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* propietario) {
     this->codigo = codigo;
     this->direccion = direccion;
     this->numeroPuerta = numeroPuerta;
     this->superficie = superficie;
     this->anoConstruccion = anoConstruccion;
+    this->propietario = propietario;
 }
 
 Inmueble::~Inmueble() {

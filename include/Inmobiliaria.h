@@ -32,7 +32,7 @@ class Inmobiliaria : public Usuario {
         std::set<DTInmuebleAdministrado> coleccionInmuebles();
         void agregar(ISuscriptor o);
         void eliminar(ISuscriptor o);
-        bool crearPub();
+        AdministraPropiedad* crearPub(int codigoInmueble, TipoPublicacion TipoPublicacion, DTFecha* fecha);
         DTUsuario getDTUsuario();
         void representarPropietario(std::string nicknamePropietario);
         //caso nuevo
