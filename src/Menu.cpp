@@ -166,12 +166,17 @@ void altaUsuario(){
             while (salir != 0){
                 if (tipoUsuario == 1){
                     std::cout << "Lista de Propietarios:\n";
-                    //TODO: Coleccion de DTUsuario = controlador->listarPropietarios();
+                    std::set<DTUsuario*> ColeccionPropietarios = factory->getIControladorUsuario()->listarPropietarios();
                     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
+                    for (std::set<DTUsuario*>::iterator it = ColeccionPropietarios.begin(); it != ColeccionPropietarios.end(); ++it) {
+                        std::string nick = (*it)->getNickname(); // Dereference the iterator
+                        std::string nombre = (*it)->getNombre(); // Dereference the iterator
+                        std::cout << "- Nickname: " << nick << ", Nombre: " << nombre << std::endl;
+                    }
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
-                    //TODO: controlador->representarPropietario(nicknamePropietario)
+                    factory->getIControladorUsuario()->representarPropietario(nicknamePropietario);
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";

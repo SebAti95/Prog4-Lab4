@@ -12,8 +12,10 @@ class ManejadorUsuario;
 class ControladorUsuario : public IUsuario {
     private:
         static ControladorUsuario* instance;
-        ManejadorUsuario* manejador;
         ControladorUsuario(); // Private constructor for singleton
+        std::string nicknameInmobiliaria;
+        std::string nicknamePropietario;
+        int codigoInmueble;
         
     public:
         static ControladorUsuario* getInstance();
@@ -27,6 +29,11 @@ class ControladorUsuario : public IUsuario {
         //Caso de uso nuevo
         void altaAdministraPropiedad(std::string nickInmobiliaria, int codigoInmueble);
         std::set<DTUsuario> listarInmobiliarias();
+        virtual std::set<DTUsuario> listarPropietarios();
+        
+        void representarPropietario(std::string nicknamePropietario);
+        void altaCasa(std::string direccion, int numeroPuerta, float superficie, int anoConstruccion, bool esPH, bool techo);
+        void altaApartamento(std::string direccion, int numeroPuerta, float superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
 };
 
 #endif

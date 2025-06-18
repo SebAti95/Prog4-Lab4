@@ -9,7 +9,7 @@ ManejadorPublicacion::ManejadorPublicacion() {
     // Initialize empty maps
     this->publicaciones = std::map<int, Publicacion*>();
     this->inmuebles = std::map<int, Inmueble*>();
-    this->inmobiliarias = std::map<std::string, Inmobiliaria*>();
+    // this->inmobiliarias = std::map<std::string, Inmobiliaria*>();
 }
 
 // Get instance - Singleton pattern
@@ -61,21 +61,21 @@ Inmueble* ManejadorPublicacion::getInmueble(int id) {
 }
 
 // Methods for managing Inmobiliaria objects
-void ManejadorPublicacion::agregarInmobiliaria(Inmobiliaria* inmobiliaria) {
-    if (inmobiliaria != nullptr) {
-        this->inmobiliarias[inmobiliaria->getNick()] = inmobiliaria;
-    }
-}
+// void ManejadorPublicacion::agregarInmobiliaria(Inmobiliaria* inmobiliaria) {
+//     if (inmobiliaria != nullptr) {
+//         this->inmobiliarias[inmobiliaria->getNick()] = inmobiliaria;
+//     }
+// }
 
-void ManejadorPublicacion::eliminarInmobiliaria(Inmobiliaria* inmobiliaria) {
-    if (inmobiliaria != nullptr) {
-        this->inmobiliarias.erase(inmobiliaria->getNick());
-    }
-}
+// void ManejadorPublicacion::eliminarInmobiliaria(Inmobiliaria* inmobiliaria) {
+//     if (inmobiliaria != nullptr) {
+//         this->inmobiliarias.erase(inmobiliaria->getNick());
+//     }
+// }
 
-Inmobiliaria* ManejadorPublicacion::getInmobiliaria(std::string nick) {
-    if (this->inmobiliarias.find(nick) != this->inmobiliarias.end()) {
-        return this->inmobiliarias[nick];
-    }
-    return nullptr;
-}
+// Inmobiliaria* ManejadorPublicacion::getInmobiliaria(std::string nick) {
+//     if (this->inmobiliarias.find(nick) != this->inmobiliarias.end()) {
+//         return this->inmobiliarias[nick];
+//     }
+//     return nullptr;
+// }

@@ -53,7 +53,7 @@ Inmobiliaria* AdministraPropiedad::getInmobiliaria(){
     return this->inmobiliaria;
 }
 DTFecha* AdministraPropiedad::getFecha(){
-    this->fecha;
+    return this->fecha;
 }
 // Implementation of pudoCrear method
 bool AdministraPropiedad::puedeCrear(TipoPublicacion tipo,DTFecha* fecha) {

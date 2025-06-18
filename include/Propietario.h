@@ -8,6 +8,7 @@
 #include "DTInmuebleListado.h"
 #include "Inmueble.h"
 #include "ISuscriptor.h"
+#include "DTUsuario.h"
 
 
 class Propietario : public Usuario, public ISuscriptor {
@@ -25,6 +26,7 @@ class Propietario : public Usuario, public ISuscriptor {
         virtual void notificar(std::string codigoInmueble);
         std::set<DTInmuebleListado> getInmueblesNoAdmin(Inmobiliaria* inm);
         void removeInmueble(int codigoInmueble);
+        DTUsuario getDTUsuario();
 };
 
 #endif

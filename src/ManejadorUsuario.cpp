@@ -80,6 +80,13 @@ std::set<Inmobiliaria*> ManejadorUsuario::getInmobiliarias() {
     }
     return inmobiliariasSet;
 }
+std::set<Propietario*> ManejadorUsuario::getPropietarios() {
+    std::set<Propietario*> propietariosSet;
+    for (std::map<std::string, Propietario*>::iterator it = this->propietario.begin(); it != this->propietario.end(); ++it) {
+        propietariosSet.insert(it->second);
+    }
+    return propietariosSet;
+}
 
 void ManejadorUsuario::eliminarInmobiliaria(Inmobiliaria* inmobiliaria) {
     if (inmobiliaria != nullptr) {

@@ -19,6 +19,10 @@ std::string Propietario::getTelefono(){
     return this->telefono;
 };
 
+DTUsuario Propietario::getDTUsuario() { 
+    return DTUsuario(this->getNick(), this->getNombre());
+};
+
 void Propietario::notificar(std::string codigoInmueble) {
     this->publicacionesSuscritas.push_back(codigoInmueble);
 };

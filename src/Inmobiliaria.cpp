@@ -64,11 +64,13 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fech
 
 std::set<DTInmuebleAdministrado> Inmobiliaria::coleccionInmuebles() {
     std::set<DTInmuebleAdministrado> inmueblesAdministrados;
-    for(std::set<AdministraPropiedad*>::iterator it = this->propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); ++it) {
+    for(std::vector<AdministraPropiedad*>::iterator it = this->propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); ++it) {
         Inmueble* inmueble = (*it)->getInmueble();
         if (inmueble != nullptr) {
-            DTInmuebleAdministrado dtInmueble(inmueble->getCodigo(), inmueble->getDireccion(), this->getNick());
-            inmueblesAdministrados.insert(dtInmueble);
+            DTFecha* fechaComienzo = (*it)->getFecha();
+            DTInmuebleAdministrado dt= DTInmuebleAdministrado(inmueble->getCodigo(), inmueble->getDireccion(), fechaComienzo);
+            inmueblesAdministrados.insert(dt);
         }
     }
+    return inmueblesAdministrados;
 }

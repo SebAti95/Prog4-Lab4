@@ -45,8 +45,9 @@ std::set<DTInmuebleAdministrado> ControladorPublicacion::listarInmueblesAdminist
 
 bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) {
     // Implementation pending
+    ManejadorUsuario* mu = ManejadorUsuario::getInstance();
+    Inmobiliaria* inm = mu->getInmobiliaria(nicknameInmobiliaria);
     ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
-    Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
     Factory* factory = Factory::getInstance();
     IControladorFechaActual* cfecha = factory->getControladorFechaActual();
     DTFecha* fechaActual = cfecha->getFechaActual();
@@ -57,6 +58,7 @@ bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, i
         Publicacion* p = new Publicacion(codigoInmueble, fechaActual,tipoPublicacion,texto,precio, true);
         admin->agregarPublicacion(p);
         m->agregarPublicacion(p);
+    }
     return exito;
 }
 
@@ -93,10 +95,10 @@ void ControladorPublicacion::altaAdministraPropiedad(std::string nicknameInmobil
     inm->altaAdministracionPropiedad(inmueble, fechaActual);
 }
 
-std::set<DTInmuebleListado> ControladorPublicacion::listarInmueblesNoAdministrados(std::string nickInmobiliaria){
+std::set<DTInmuebleListado> ControladorPublicacion::listarInmueblesNoAdministrados(std::string nickInmobiliaria) {
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nickInmobiliaria);
     std::set<DTInmuebleListado> listInmuebles = inm->getInmbueblesNoAdminPropietario();
     return listInmuebles;             
-};
+}
 

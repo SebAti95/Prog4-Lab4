@@ -14,6 +14,9 @@ class DTInmuebleAdministrado {
         std::string getDireccion();
         DTFecha* getFechaComienzo();
         ~DTInmuebleAdministrado();
+        
+        // Operator for std::set comparison
+        bool operator<(const DTInmuebleAdministrado& other) const;
 };
 
 #endif
