@@ -32,6 +32,8 @@ class Inmueble {
         void removePropietario();
         bool esAdministrado(Inmobiliaria* inm);
         void asociarAdministracionPropiedad(AdministraPropiedad* adminPropiedad);
+        std::vector<AdministraPropiedad*> getAdminis();
+
 };
 
 #include "AdministraPropiedad.h"

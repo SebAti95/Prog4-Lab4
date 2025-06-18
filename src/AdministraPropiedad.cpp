@@ -31,10 +31,10 @@ AdministraPropiedad::~AdministraPropiedad() {
     
     // Delete all publication objects in the map
     for (std::map<int, Publicacion*>::iterator it = publicaciones.begin(); it != publicaciones.end(); ++it) {
-    if (it->second != nullptr) {
-        delete it->second;
+        if (it->second != nullptr) {
+            delete it->second;
+        }
     }
-}
     
     // Clear the map
     publicaciones.clear();

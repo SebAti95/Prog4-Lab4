@@ -51,3 +51,7 @@ bool Inmueble::esAdministrado(Inmobiliaria* inm) {
 void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* adminPropiedad) {
     this->administraciones.push_back(adminPropiedad);
 }
+
+std::vector<AdministraPropiedad*> Inmueble::getAdminis() {
+    return this->administraciones;
+}

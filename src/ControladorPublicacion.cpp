@@ -40,14 +40,14 @@ std::set<DTInmuebleAdministrado> ControladorPublicacion::listarInmueblesAdminist
     ManejadorUsuario* m = ManejadorUsuario::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
     res = inm->coleccionInmuebles();
-    return res
+    return res;
 }
 
 bool ControladorPublicacion::altaPublicacion(std::string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio) {
     // Implementation pending
-    ManejadorPublicacion* m=ManejadorPublicacion::getInstance();
+    ManejadorPublicacion* m = ManejadorPublicacion::getInstance();
     Inmobiliaria* inm = m->getInmobiliaria(nicknameInmobiliaria);
-    bool exito=crearPub(inm);
+    //bool exito=crearPub(inm);
     return false;
 }
 
@@ -57,7 +57,20 @@ std::set<DTPublicacion> ControladorPublicacion::listarPublicacion(TipoPublicacio
 }
 
 void ControladorPublicacion::eliminarInmueble(int codigoInmueble) {
-    // Implementation pending
+    ManejadorPublicacion* manejPub = ManejadorPublicacion::getInstance();
+    //std::map<int, Inmueble*>::iterator it;
+    //it = manejPub->inmuebles.find(codigoInmueble);
+    Inmueble* inm = manejPub->getInmueble(codigoInmueble);
+    if (inm != nullptr) {
+        inm->removePropietario();
+        std::vector<AdministraPropiedad*>::iterator it;
+        std::vector<AdministraPropiedad*> adminis = inm->getAdminis();
+        for (it = adminis.begin(); it != adminis.end(); ++it) {
+            (*it)->eliminarPublicacionesAsoc();
+            
+        }
+        
+    }
 }
 
 void ControladorPublicacion::altaAdministraPropiedad(std::string nicknameInmobiliaria, int codigoInmueble) {
