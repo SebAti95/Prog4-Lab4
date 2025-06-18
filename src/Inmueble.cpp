@@ -31,6 +31,9 @@ int Inmueble::getAnoConstruccion() {
 void Inmueble::removePropietario() {
     
 }
+DTInmueble Inmueble::getDTInmueble() {
+    return DTInmueble(this->codigo, this->direccion, this->numeroPuerta, this->superficie, this->anoConstruccion);
+}
 bool Inmueble::esAdministrado(Inmobiliaria* inm) {
     std::vector<AdministraPropiedad*>::iterator i;
     for (i = this->administraciones.begin(); i != this->administraciones.end(); ++i) { 

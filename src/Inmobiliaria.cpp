@@ -28,6 +28,9 @@ DTUsuario Inmobiliaria:: getDTUsuario(){
     DTUsuario dt = DTUsuario(nickname,nombre);
     return dt;
 }
+bool Inmobiliaria:: crearPub(Inmobiliaria* inm){
+    
+}
 std::set<DTInmuebleListado> Inmobiliaria::getInmbueblesNoAdminPropietario() {
     std::set<DTInmuebleListado> inmueblesNoAdministrados;
     for (std::map<int,Propietario*>::iterator i = this->propietariosRepresentados.begin(); i != this->propietariosRepresentados.end(); ++i) { //recorrer los propietarios asociados a la inm
@@ -43,3 +46,13 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmueble, DTFecha* fech
     inmueble->asociarAdministracionPropiedad(nuevaAdministracion);
 }
 
+std::set<DTInmuebleAdministrado> Inmobiliaria::coleccionInmuebles() {
+    std::set<DTInmuebleAdministrado> inmueblesAdministrados;
+    for(std::set<AdministraPropiedad*>::iterator it = propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); ++it) {
+        Inmueble* inmueble = (*it)->getInmueble();
+        if (inmueble != nullptr) {
+            DTInmuebleAdministrado dtInmueble(inmueble->getCodigo(), inmueble->getDireccion(), this->getNick());
+            inmueblesAdministrados.insert(dtInmueble);
+        }
+    }
+}

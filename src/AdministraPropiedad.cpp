@@ -48,6 +48,7 @@ AdministraPropiedad::~AdministraPropiedad() {
 // Implementation of pudoCrear method
 bool AdministraPropiedad::pudoCrear(int codigoInmueble) {
     // Implementation pending
+    
     return false;
 }
 
